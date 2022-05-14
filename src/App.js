@@ -2,19 +2,6 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
-// const initialState = {
-//   name: '',
-//   description: '',
-//   attr1: 0,
-//   attr2: 0,
-//   attr3: 0,
-//   image: '',
-//   rare: '',
-//   hasTrunfo: false,
-//   isSaveButtonDisabled: false,
-//   cardTrunfo: false,
-// }
-
 class App extends React.Component {
   state = {
     name: '',
@@ -25,17 +12,37 @@ class App extends React.Component {
     image: '',
     rare: '',
     hasTrunfo: false,
-    isSaveButtonDisabled: false,
-    cardTrunfo: false,
+    isSaveButtonDisabled: true,
+    cardTrunfo: true,
   }
 
-  handleChange = (target) => {
+  handleChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value });
+    const vall = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState(() => ({ [name]: vall }), this.validateSaveButton);
   };
 
-  onSaveButtonClick = () => {}
+  onSaveButtonClick = () => {
+    console.log('xablau');
+  }
+
+  validateSaveButton = () => {
+    const { name, description, attr1, attr2, attr3, image, rare } = this.state;
+    let val = true;
+
+    if (Number((attr1) + (attr2) + (attr3) > ('210'))) {
+      val = false;
+    }
+    if (Number(attr1 > '90' || attr1 < 0)) val = false;
+    if (Number(attr2 > '90' || attr2 < 0)) val = false;
+    if (Number(attr3 > '90' || attr3 < 0)) val = false;
+
+    if (name && description && image && rare && val) {
+      this.setState(() => ({ isSaveButtonDisabled: false }));
+    } else {
+      this.setState(() => ({ isSaveButtonDisabled: true }));
+    }
+  }
 
   render() {
     const { name, description, attr1, attr2, attr3, image, rare,

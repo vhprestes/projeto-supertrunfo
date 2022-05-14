@@ -17,6 +17,7 @@ class Form extends React.Component {
             type="text"
             value={ cardName }
             onChange={ onInputChange }
+            name="name"
           />
         </label>
         <label htmlFor="description-input">
@@ -27,6 +28,7 @@ class Form extends React.Component {
             type="text"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="description"
           />
         </label>
         <label htmlFor="attr1">
