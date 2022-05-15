@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardList from './components/CardList';
 
 class App extends React.Component {
   state = {
@@ -49,9 +50,7 @@ class App extends React.Component {
     const { name, description, attr1, attr2, attr3, image, rare } = this.state;
     let val = true;
 
-    if (Number(attr1 + attr2 + attr3 > '210')) {
-      val = false;
-    }
+    if (Number(attr1 + attr2 + attr3 > '210')) val = false;
     if (Number(attr1 > '90' || attr1 < 0)) val = false;
     if (Number(attr2 > '90' || attr2 < 0)) val = false;
     if (Number(attr3 > '90' || attr3 < 0)) val = false;
@@ -77,6 +76,7 @@ class App extends React.Component {
       // cardTrunfo,
       isSaveButtonDisabled,
       trunfo,
+      cards,
     } = this.state;
     return (
       <div>
@@ -106,6 +106,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           // hasTrunfo={ hasTrunfo }
         />
+        <CardList saved={ cards } />
       </div>
     );
   }
