@@ -13,8 +13,9 @@ class App extends React.Component {
     rare: '',
     hasTrunfo: false,
     isSaveButtonDisabled: true,
-    cardTrunfo: true,
+    // cardTrunfo: false,
     cards: [],
+    trunfo: false,
   };
 
   handleChange = ({ target }) => {
@@ -37,6 +38,10 @@ class App extends React.Component {
           image: '',
           rare: 'normal',
         }));
+        const { trunfo } = this.state; /* testando */
+        if (trunfo) {
+          this.setState(() => ({ hasTrunfo: true }));
+        }
       });
   };
 
@@ -56,6 +61,7 @@ class App extends React.Component {
     } else {
       this.setState(() => ({ isSaveButtonDisabled: true }));
     }
+    console.log('xablau');
   };
 
   render() {
@@ -68,8 +74,9 @@ class App extends React.Component {
       image,
       rare,
       hasTrunfo,
-      cardTrunfo,
+      // cardTrunfo,
       isSaveButtonDisabled,
+      trunfo,
     } = this.state;
     return (
       <div>
@@ -82,7 +89,7 @@ class App extends React.Component {
           cardAttr3={ attr3 }
           cardImage={ image }
           cardRare={ rare }
-          cardTrunfo={ cardTrunfo }
+          cardTrunfo={ trunfo }
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
@@ -96,8 +103,8 @@ class App extends React.Component {
           cardAttr3={ attr3 }
           cardImage={ image }
           cardRare={ rare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
+          cardTrunfo={ trunfo }
+          // hasTrunfo={ hasTrunfo }
         />
       </div>
     );
