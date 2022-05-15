@@ -13,7 +13,7 @@ class App extends React.Component {
     rare: '',
     hasTrunfo: false,
     isSaveButtonDisabled: true,
-    cardTrunfo: false,
+    cardTrunfo: true,
     cards: [],
   };
 
@@ -97,7 +97,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={ hasTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
       </div>
     );
